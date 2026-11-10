@@ -5,7 +5,7 @@ _default:
 
 
 CFLAGS := $(CFLAGS) -g3 -O0 -std=c99 -Wall -pedantic
-LDFLAGS := -lX11
+LDFLAGS := -lX11 -lm
 
 
 CIKTILAR = $(patsubst %.c,cikti/%.out,$(wildcard *.c))

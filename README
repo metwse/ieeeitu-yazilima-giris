@@ -1,0 +1,21 @@
+IEEE İTÜ / Yazılıma Giriş
+-------------------------
+
+    C üzerinden yazılıma giriş dersi.
+
+    Müfredat
+    Ch00. Pseudo-code üzerinden, "yazılım nedir?"
+
+    Ch01. if ve while/for döngüleri, fonksiyonlar
+
+    Ch02. xox oyunu kodlama
+
+
+DERLEME
+-------
+
+        Ch01'deki grafik arayüzü uygulamalarını çalıştırabilmek için, POSIX
+    uyumlu bir ortam, GNU Make ve libX11/Xorg gerekiyor.
+
+        Ch02'yi herhangi bir C99 compiler'ıyla derleyip her platformda
+    çalıştırabilirsiniz.

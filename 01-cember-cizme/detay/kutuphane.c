@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include "../kutuphane.h"
 
 #include <X11/X.h>
@@ -5,23 +7,32 @@
 #include <X11/Xutil.h>
 
 #include <pthread.h>
+#include <unistd.h>
 
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
 
 
+bool quit = false;
+
+
 static Display *dpy;
 static Screen *scr;
 static Window w;
 
-Atom wm_delete_win;
+
+/* --- genel pencere ayarları --- */
 
 /* Klavyedeki ESC tuşuyla ve titlebar'daki çarpı butonuyla uygulamayı kapatmak
  * için. */
 static void *ev_loop_handler(void *unused)
 {
-	bool quit = false;
+	Atom wm_delete_win = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
+	XSetWMProtocols(dpy, w, &wm_delete_win, 1);
+
+	XSelectInput(dpy, w, KeyPressMask);
+
 	while (!quit) {
 		XEvent ev;
 		XNextEvent(dpy, &ev);
@@ -49,10 +60,7 @@ static void *ev_loop_handler(void *unused)
 /* Dinlenecek X11 event'lerini ayarlayıp Map event'ini bekler. */
 static pthread_t ev_init(void)
 {
-	wm_delete_win = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
-
-	XSetWMProtocols(dpy, w, &wm_delete_win, 1);
-	XSelectInput(dpy, w, StructureNotifyMask | KeyPressMask | ExposureMask);
+	XSelectInput(dpy, w, StructureNotifyMask);
 
 	while (true) {
 		XEvent ev;
@@ -90,17 +98,59 @@ static void init_window(void)
 	XMapWindow(dpy, w);
 }
 
-int main(void)
+
+/* --- graphics context --- */
+
+static GC gc;
+
+/* Graphics context hazırlanması. */
+static void init_gc(void)
 {
+	gc = XDefaultGCOfScreen(scr);
+}
+
+void circle(int x, int y, int r, unsigned char color)
+{
+	XSetFillStyle(dpy, gc, FillSolid);
+	XSetForeground(dpy, gc, color * 0x010101);
+	XFillArc(dpy, w, gc, x - r, y - r, r * 2, r * 2, 0, 360 * 64);
+	XFlush(dpy);
+}
+
+void clear(void)
+{
+	XClearWindow(dpy, w);
+}
+
+
+/* --- extra --- */
+
+void sleepf(double secs)
+{
+	usleep(secs * 1000000);
+}
+
+
+/* --- library init/deinit --- */
+
+static pthread_t ev_loop;
+
+__attribute__((constructor))
+static void init_lib(void)
+{
+	XInitThreads();
 	assert((dpy = XOpenDisplay(NULL)));
 	scr = XDefaultScreenOfDisplay(dpy);
 
 	init_window();
+	init_gc();
 
-	pthread_t ev_loop = ev_init();
+	ev_loop = ev_init();
+}
 
-	baslangic();
-
+__attribute__((destructor))
+static void destroy_lib(void)
+{
 	pthread_join(ev_loop, NULL);
 
 	XCloseDisplay(dpy);

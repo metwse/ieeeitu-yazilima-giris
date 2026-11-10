@@ -1,6 +1,6 @@
 #include "kutuphane.h"
 
 
-void baslangic()
+int main(void)
 {
 }

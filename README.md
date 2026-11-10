@@ -1,3 +1,0 @@
-# IEEE İTÜ / Yazılıma Giriş
-
-
