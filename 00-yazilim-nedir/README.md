@@ -25,27 +25,35 @@ Gramerleri sadece bilgisayarlar mı kullanıyor?
 
 <details>
 <summary>Malzeme + davranış</summary>
-- `ingredient egg;`
-- `ingredient water;`
-- `ingredient salt;`
-- `tool pot;`
-- `tool timer;`
-- `add_water();`
-- `put_eggs();`
-- `set_timer();`
-- `wait(10 minutes);`
-- `if (eggs are cracked)` yumurtalar küçükse önceden kırıabilirler
-    - `hurry up! take them early`
-- `wait(2 minutes);`
-- `take_eggs();`
-- `peel_eggs();`
-- `add_salt();`
+Pseudo-code:
+
+```c
+ingredient egg;
+ingredient water;
+ingredient salt;
+
+tool pot;
+tool timer;
+
+add_water();
+put_eggs();
+set_timer();
+
+wait(10 minutes);
+if (eggs are "cracked")  // yumurtalar küçükse önceden kırıabilir
+    hurry_up()! take_them_early()!!
+
+wait(2 minutes);
+take_eggs();
+peel_eggs();
+add_salt();
+```
 
 <details>
 <summary>Gramer kullandık</summary>
 
-Belirsiz bir gramer! `hurry up!` acele etme anlamına geliyor, ama ne kadar?
-Acele kime göre neye göre?
+Belirsiz bir gramer! `hurry_up()!` acele et diyor demesine, ama ne kadar? Kime
+göre acele neye göre acele?
 
 Algoritmayı belirsiz bir şekilde ifade etmemeliyiz (yani genelde). Bunun için
 "deterministik" gramerler kullanıyoruz, yazılım dilleri de aslında insan
