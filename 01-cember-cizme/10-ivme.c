@@ -1,5 +1,4 @@
 #include "kutuphane.h"
-#include <math.h>
 
 
 void ciz(int x, int y, int r)
