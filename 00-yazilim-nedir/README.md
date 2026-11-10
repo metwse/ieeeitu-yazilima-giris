@@ -40,7 +40,7 @@ put_eggs();
 set_timer();
 
 wait(10 minutes);
-if (eggs are "cracked")  // yumurtalar küçükse önceden kırıabilir
+if (eggs are "cracked")  // yumurtalar küçükse erkenden çatlayabilir.
     hurry_up()! take_them_early()!!
 
 wait(2 minutes);
