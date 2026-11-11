@@ -12,6 +12,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 bool quit = false;
@@ -60,15 +61,6 @@ static void *ev_loop_handler(void *unused)
 /* Dinlenecek X11 event'lerini ayarlayıp Map event'ini bekler. */
 static pthread_t ev_init(void)
 {
-	XSelectInput(dpy, w, StructureNotifyMask);
-
-	while (true) {
-		XEvent ev;
-		XNextEvent(dpy, &ev);
-
-		if (ev.type == MapNotify)
-			break;
-	}
 	pthread_t ev_loop;
 	pthread_create(&ev_loop, NULL, ev_loop_handler, NULL);
 
@@ -76,9 +68,16 @@ static pthread_t ev_init(void)
 }
 
 /* Pencere stil ve boyut ayarları. */
-static void init_window(void)
+static void init_window(const char *wid)
 {
+	bool default_root = true;
 	Window root = XRootWindowOfScreen(scr);
+
+	/* Window ID verilmişse onun içinde aç. */
+	if (wid != NULL) {
+		default_root = false;
+		root = strtol(wid, NULL, 0);
+	}
 
 	int x = XWidthOfScreen(scr) / 2 - WIDTH / 2;
 	int y = XHeightOfScreen(scr) / 2 - HEIGHT / 2;
@@ -89,11 +88,13 @@ static void init_window(void)
 	w = XCreateSimpleWindow(dpy, root, x, y, WIDTH, HEIGHT, 1,
 				border_color, background_color);
 
-	XSetNormalHints(dpy, w, &(XSizeHints) {
-				.flags = PMinSize | PMaxSize,
-				.min_width = WIDTH, .min_height = HEIGHT,
-				.max_width = WIDTH, .max_height = HEIGHT,
-			});
+	if (default_root) {
+		XSetNormalHints(dpy, w, &(XSizeHints) {
+					.flags = PMinSize | PMaxSize,
+					.min_width = WIDTH, .min_height = HEIGHT,
+					.max_width = WIDTH, .max_height = HEIGHT,
+				});
+	}
 
 	XMapWindow(dpy, w);
 }
@@ -136,13 +137,13 @@ void sleepf(double secs)
 static pthread_t ev_loop;
 
 __attribute__((constructor))
-static void init_lib(void)
+static void init_lib(int argc, char *argv[])
 {
 	XInitThreads();
 	assert((dpy = XOpenDisplay(NULL)));
 	scr = XDefaultScreenOfDisplay(dpy);
 
-	init_window();
+	init_window(argc == 2 ? argv[1] : NULL);
 	init_gc();
 
 	ev_loop = ev_init();
