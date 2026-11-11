@@ -6,7 +6,7 @@
 
 Bilgisayara bir *işlemi*, *algoritmayı* tarif etmektir.
 
-*"series of instructoins"*
+*"series of instructions"*
 
 Peki *bilgisayar nedir*?
 
@@ -14,7 +14,7 @@ Peki *bilgisayar nedir*?
 [pushdown automaton](https://en.wikipedia.org/wiki/Pushdown_automaton),
 [Turing machine](https://en.wikipedia.org/wiki/Turing_machine),
 [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
-teorisine çok fazla şey var. Özetlersek bir tür "gramer"e göre "durum" durum
+teorisinde çok fazla şey var. Özetlersek bir tür "gramer"e göre durum
 değiştirip girdi/çıktı veren aygıt.
 
 Gramerleri sadece bilgisayarlar mı kullanıyor?
@@ -69,7 +69,7 @@ grammar" (CSG) olarak ifade edilir. İnsan dilleri "unrestricted" denen, CFG ve
 CSG'nin üst kümesinde bulunur.
 
 Üstten alta gramer sınıfları:
-- Unrestricted / Recursively enumerable (tip 0) ("her" algoritma")
+- Unrestricted / Recursively enumerable (tip 0) ("her" algoritma)
 - Context sensitive (tip 1)
 - Context free (tip 2)
 - Regular (tip 3)

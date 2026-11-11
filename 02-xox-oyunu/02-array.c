@@ -18,12 +18,12 @@ int main(void)
 
 	/* 2 boyutlu işlem yapmak için, her bir array elemanına atama yapsak...
 	 *
-	 * C'de doğal sayılar 0'dan başlıyor. array'in ilk elemani c[0], son
+	 * C'de doğal sayılar 0'dan başlıyor. array'in ilk elemanı c[0], son
 	 * (9.) elemanı c[8] ile ifade ediliyor.
 	 *
 	 * her bir x, y değeri için şu atamayı yapmamızda sakınca yoktur:
 	 *
-	 * x | y | karşılık array elemanı
+	 * x | y | karşılık gelen array elemanı
 	 * ------------
 	 * 0 - 0 - c[0]
 	 * 1 - 0 - c[1]

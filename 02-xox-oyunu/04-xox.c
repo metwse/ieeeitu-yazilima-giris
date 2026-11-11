@@ -72,7 +72,7 @@ int kazanan_kontrol(void)
 			}
 		}
 
-		/* aynisi, ama ters koordinatlarla. satır satır kontrol */
+		/* aynısı, ama ters koordinatlarla. satır satır kontrol */
 		for (int b = 0; b < 3; b++) {
 			int yatay = 0;
 

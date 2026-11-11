@@ -41,7 +41,7 @@ static void *ev_loop_handler(void *unused)
 		switch (ev.type) {
 		case KeyPress:
 			if (ev.xkey.keycode == 9) {
-				fprintf(stderr, "Exitting due to ESC key.\n");
+				fprintf(stderr, "Exiting due to ESC key.\n");
 				quit = true;
 			}
 			break;

@@ -11,7 +11,7 @@ int f(int x, int y)
 	return x + y * 3;
 }
 
-/* x, y koordinatını bir degere ata */
+/* x, y koordinatını bir değere ata */
 void set(int x, int y, int val)
 {
 	c[f(x, y)] = val;
