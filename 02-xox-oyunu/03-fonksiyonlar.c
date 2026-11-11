@@ -32,10 +32,10 @@ void print(void)
 				printf(" ");
 			}
 			if (get(a, b) == 1) {
-				printf("x");
+				printf("O");
 			}
 			if (get(a, b) == 2) {
-				printf("o");
+				printf("X");
 			}
 		}
 		printf("\n");

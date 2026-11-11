@@ -1,0 +1,39 @@
+IEEE İTÜ / Yazılıma Giriş / XOX
+-------------------------------
+
+    GNU Make + GCC kullanarak derleyebilirsiniz.
+
+        make -j derle
+
+    Komutu bütün kodları derler.
+
+
+Ek Kaynaklar
+------------
+
+    00-hello-world.c dosyasında giriş düzeyde öğrenme için linkler mevcut.
+
+    C'de kendinizi rahat hissetmeye başladıktan sonra daha advanced konular
+    için sırasıyla bu kaynaklara bakabilirsiniz:
+
+        - https://github.com/metwse/how-to-oop.git - Zorlanmanız için
+            tasarlandı. Self-study, üzerinde uğraşarak advanced C
+            öğrenebilirsiniz.
+
+        - https://github.com/metwse/derleyici-tasarimi.git - Programming
+            language theory. YouTube'a videolarını da yükledim.
+
+        - https://craftinginterpreters.com/ - How to OOP ve derleyici tasarımı
+            kaynaklarından sonra C'de uzmanlaşmak için uygulamalı proje
+            yaptırıyor. İlk bölümü Java üzerinde işleniyor. Biraz göz
+            gezdirip "A bytecode virtual machine" bölümüne atlayabilirsiniz.
+
+    Bu kaynakta, diğer kaynaklarda, pek çok kitapta, pek çok projede
+    görebileceğiniz GNU Make'i öğrenmek içinse
+
+        - https://makefiletutorial.com/
+
+
+Daha fazlası için
+
+    - https://metehanselvi.com/
