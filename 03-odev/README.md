@@ -1,8 +1,10 @@
-00-02 partları arasındaki konuların kısa özeti icin
+00-02 partları arasındaki konuların kısa özeti için
 [cheatsheet](./cheatsheet.md)'e bakabilirsiniz.
 
+<hr />
 
-**q1.** Aşağıdaki deseni nasıl çizeriz?
+### q1. Aşağıdaki deseni nasıl çizersiniz?
+
 ```
 ***
 **
@@ -42,8 +44,10 @@ int main(void)
   başlatabiliyoruz gördüğünüz gibi. Yine 0'dan başlasaydı nasıl olurdu?
 </details>
 
+<hr />
 
-**q2.** Aşağıdaki deseni nasıl çizeriz?
+### q2. Aşağıdaki üçgeni nasıl çizersiniz?
+
 ```
 *
 **
@@ -84,9 +88,10 @@ int main(void)
 - Yine i, 1'den başlıyor. Bunu 0'a çeksek nasıl olurdu?
 </details>
 
+<hr />
 
-**q3.** Kullanıcıdak iki sayı sorup büyük olan sayıyı söyleyen programı
-nasıl yazarsınız?
+### q3. İki sayı sorup büyük olan sayıyı söyleyen programı nasıl yazarsınız?
+
 ```
 iki sayı yazınız: ... kullanıcı sayıyı yazar
 ilk sayı daha büyük!
@@ -124,8 +129,10 @@ int main(void)
   `if`/`else if` içinde baksaydık nasıl olurdu?
 </details>
 
+<hr />
 
-**q4.** İki sayı alıp o ölçülerde dörtgen çizen programı nasıl yazarsınız?
+### q4. İki sayı alıp o ölçülerde dörtgen çizen programı nasıl yazarsınız?
+
 ```
 iki sayı yazınız: ... kullanıcı sayıyı yazar, genişlik - yükseklik
 #####
