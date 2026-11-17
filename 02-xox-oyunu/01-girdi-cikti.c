@@ -10,7 +10,16 @@ int main(void)
 	int y;
 
 	printf("x ve y koordinatları: ");
+	/* scanf ve %d'yi de sorgulamamanızı istiyorum */
 	scanf("%d %d", &x, &y);
+
+	/* scanf ile kullanıcıdan girdi alabiliyoruz.
+	 *
+	 * değişken sayımı kadar %d koyup sonrasında &degisken_ismi şeklinde
+	 * bir kullanımı var:
+	 *
+	 * scanf("%d", &bir_degisken);
+	 * scanf("%d %d", &bir, &ikinci_degisken); */
 
 	/* koordinat düzleminde 0, 0'dan başlayıp 19, 9'a kadar gidelim
 	 * mesela */
