@@ -31,14 +31,14 @@ x = x / 2;  /* not: int'lerle bölme işlemi yapınca aşağı yuvarlar */
 x = 1 * 3 - 4;
 
 double y = 1.5;
-y = y / 3;  /* bu sefer 0.5 kalıyor */
+y = y / 3;  /* bu sefer sonuç 0.5, yuvarlama yok */
 
 /* toplama, çıkarma, çarpma, bölmenin yanısıra "bölümden kalan" işlemi
  * tanımlıdır: */
 
 int k = 12;
 
-k = k % 10;  /* k'yı k'nın 10 ile bölümünden kalan, 2'ye eşitle */
+k = k % 10;  /* k'yı, k'nın 10 ile bölümünden kalanına (yani 2'ye) eşitle */
 ```
 
 | işlem | operatör |
@@ -53,13 +53,14 @@ Koşullar içinse,
 |--|--|
 | eşittir | `==` |
 | eşit değildir | `!=` |
-| büyüktür/büyük ya da eşittir | `>`/`>=` |
-| küçüktür/küçük ya da eşittir | `<`/`<=` |
+| büyüktür/büyük eşittir | `>`/`>=` |
+| küçüktür/küçük eşittir | `<`/`<=` |
 
-Birden fazla koşul kontrolü için ve (ikisi de doğruysa, `&&`) ya da veya (
-ikisinden herhangi biri doğruysa, `||`) operatörleri kullanılabilir:
+Birden fazla koşul kontrolü için ve (ikisi de doğruysa, `&&`) ile veya
+(ikisinden herhangi biri doğruysa, `||`) operatörleri kullanılabilir:
 
-`x > 10 || x == 3` x 10'dan büyük ya da 3'e eşit.
+`x > 10 || x == 3` x 10'dan büyük veya 3'e eşit koşullarının herhangi birinin
+doğru olması durumunu temsil eder.
 
 Dikkat: Bir değişkeni atamak için `=` (tek eşittir) kullanıyoruz, eşitlik
 durumunu kontrol etmek içinse `==`.

@@ -59,7 +59,7 @@ int main(void)
 <details>
 <summary>Çözüm</summary>
 
-Yine i satır numaramızı temsil etsin ve 0'den başlasın. 1, 2, 3, 4 ve 5
+Yine i satır numaramızı temsil etsin ve 1'den başlasın. 1, 2, 3, 4 ve 5
 değerlerini alarak satırları tek tek çizdirsin.
 
 ```c
