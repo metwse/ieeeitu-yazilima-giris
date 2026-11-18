@@ -1,6 +1,10 @@
 00-02 partları arasındaki konuların kısa özeti için
 [cheatsheet](./cheatsheet.md)'e bakabilirsiniz.
 
+Çözümlere bakmadan önce kendiniz deneyin. Çözüme bakacak olursanız, onun
+içerisinde de ek görevler mevcut. Çözüm kodunu modifiye ederek farklı bir
+yöntemle daha çözmeniz bekleniyor.
+
 <hr />
 
 ### q1 Aşağıdaki deseni nasıl çizersiniz?
@@ -193,10 +197,12 @@ x = x * 3;
 
 printf("x * 3 ifadesinin sonucu %d sayısına eşittir\n", x);
 
-/* birkaç ufak fark var:
+/* birkaç ufak fark oldu:
  * - & kullanmadık
  * - metin de yazabiliyoruz. scanf'te sadece %d yazmıştık */
 ```
+
+Bunun çıktısı "x * 3 ifadesinin sonucu 6 sayısına eşittir" olur.
 
 Yine birden fazla sayıyı birden fazla `%d` ile yazabiliriz:
 
