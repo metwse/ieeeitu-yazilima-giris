@@ -3,7 +3,7 @@
 
 <hr />
 
-### q1. Aşağıdaki deseni nasıl çizersiniz?
+### q1 Aşağıdaki deseni nasıl çizersiniz?
 
 ```
 ***
@@ -46,7 +46,7 @@ int main(void)
 
 <hr />
 
-### q2. Aşağıdaki üçgeni nasıl çizersiniz?
+### q2 Aşağıdaki üçgeni nasıl çizersiniz?
 
 ```
 *
@@ -90,7 +90,7 @@ int main(void)
 
 <hr />
 
-### q3. İki sayı sorup büyük olan sayıyı söyleyen programı nasıl yazarsınız?
+### q3 İki sayı sorup büyük olan sayıyı söyleyen programı nasıl yazarsınız?
 
 ```
 iki sayı yazınız: ... kullanıcı sayıyı yazar
@@ -131,7 +131,7 @@ int main(void)
 
 <hr />
 
-### q4. İki sayı alıp o ölçülerde dörtgen çizen programı nasıl yazarsınız?
+### q4 İki sayı alıp o ölçülerde dörtgen çizen programı nasıl yazarsınız?
 
 ```
 iki sayı yazınız: ... kullanıcı sayıyı yazar, genişlik - yükseklik
@@ -179,3 +179,168 @@ int main(void)
 Not: Ve (`&&`) operatörünün işlem önceliği veya (`||`) operatöründen daha
 yüksektir. Yazacağınız koda göre parantez kullanmanız gerekebilir
 </details>
+
+<hr />
+
+Şimdiye kadar `scanf("%d", &degisken_adi)` kullanarak hep *integer* değişkene
+okuma yaptık. Benzer bir şekilde, `printf("%d", degisken_adi)` ile *integer*
+değişkeni yazdırabiliyoruz. Üstelik printf'te değişkenle birlikte başka şeyler
+de yazdırabiliriz:
+
+```c
+int x = 2;
+x = x * 3;
+
+printf("x * 3 ifadesinin sonucu %d sayısına eşittir\n", x);
+
+/* birkaç ufak fark var:
+ * - & kullanmadık
+ * - metin de yazabiliyoruz. scanf'te sadece %d yazmıştık */
+```
+
+Yine birden fazla sayıyı birden fazla `%d` ile yazabiliriz:
+
+```c
+printf("x, y koordinatları: (%d, %d)\n", x, y);
+```
+
+<hr />
+
+### q6 Aşağıdaki kodun çıktısı nedir?
+
+```c
+#include <stdio.h>
+
+
+int main(void)
+{
+    int a = 5;
+    int b = 10;
+    int c = 15;
+    int d = 20;
+
+    a = a * 2;
+    b = b + a;
+    c = c + b - 5;
+    d = d * 2;
+
+    printf("%d - %d - %d - %d\n", a, b, c, d);
+}
+```
+
+
+<details>
+<summary>Çözüm</summary>
+
+`10 - 20 - 30 - 40`
+
+- Bu atama işlemleri satır satır ilerliyor. İlk işlemle a'yı iki katına
+  eşitliyoruz, sonraki işlemde b'nin üzerine 5 * 2'yi ekliyoruz.
+</details>
+
+<hr />
+
+### q7 Aşağıdaki kodun çıktısı nedir?
+
+```c
+#include <stdio.h>
+
+
+int main(void)
+{
+    int arr[4];  /* 4 eleman tutacak bir array */
+
+    /* arr'daki elemanların ilk değerini atıyoruz */
+    arr[0] = 5;
+    arr[1] = 10;
+    arr[2] = 15;
+    arr[3] = 20;
+
+    arr[0] = arr[0] * 2;
+    arr[1] = arr[1] + arr[0];
+    arr[2] = arr[2] + arr[1] - 5;
+    arr[3] = arr[3] * 2;
+
+    printf("%d - %d - %d - %d\n", arr[0], arr[1], arr[2], arr[3]);
+}
+```
+
+Hatırlatma: Array'lerde index 0'dan başlar.
+
+<details>
+<summary>Çözüm</summary>
+
+`10 - 20 - 30 - 40`
+
+- Aslında bu bir önceki kodun aynısı. 4 ayrı değişken yerine tek array içinde
+  a, b, c ve d'yi tutmuş gibi olduk.
+</details>
+
+<hr />
+
+### Foreshadowing: q8 Pointer'lar, bu kod ne yapar?
+
+```c
+#include <stdio.h>
+
+
+int main(void) {
+    int arr[4];
+
+    arr[0] = 5;
+    arr[1] = 10;
+    arr[2] = 15;
+    arr[3] = 20;
+
+    int *ptr = arr;
+
+    *ptr = *ptr * 2;
+    *(ptr + 1) = *(ptr + 1) + *ptr;
+    *(ptr + 2) = *(ptr + 2) + *(ptr + 1) - 5;
+    *(ptr + 3) = *(ptr + 3) * 2;
+
+    printf("%d - %d - %d - %d\n", *ptr, *(ptr + 1), *(ptr + 2), *(ptr + 3));
+}
+```
+
+Bir sonraki dersimizde *pointer*'larla ilgileneceğiz. Peki pointer nedir?
+Pointer verinin kendisini değil, o verinin "bellekteki adresini" tutmaya
+yarayan değişkendir.
+
+Pekin neden pointer? Fonksiyona bir değişken verdiğinde C onun kopyasını
+oluşturur. Fonksiyon bu kopya üzerinde ne yaparsa yapsın senin asıl değişkenin
+değişmez. Orijinal değişkeni değiştirmek istiyorsak fonksiyona kopya değil,
+değişkenin "adresini" yani pointer veririz. Fonksiyon da doğrudan adrese gidip
+aslını değiştirir.
+
+#### Adres Alıcı Operatör, `&`
+
+"Bu değişkenin bellek adresi nedir?"
+
+Bir değişkenin başına `&` koyduğunda, o değişkenin saklandığı bellek adresini
+elde edersin.
+
+- `degisken` - Değişkenin içindeki değerdir
+- `&degisken` - Değişkenin bellek adresidir
+
+Aslında biz scanf'e `&degisken` ile parametre verdiğimizde ona değeri oku
+ve "git şu değişkene" yaz diyorduk! Bu sayede fonksiyona verdiğimiz
+parametreyle dönüt aldık.
+
+#### Dereference Operatörü, `*`
+
+1. Yanındaki değişkenin bir pointer olduğunu belirtir
+
+```c
+int *ptr = dizi;
+```
+
+2. Pointer'ın tuttuğu adrese gidip oradaki kapıyı açar
+```c
+*ptr = *ptr * 2;
+```
+
+Bunu başta çarpma işlemiyle karıştırabilirsiniz. Zamanla mantığı oturacaktır,
+daha detaylı da işleyeceğiz.
+
+Cevaba gelecek olursak, yine `10 - 20 - 30 - 40`.

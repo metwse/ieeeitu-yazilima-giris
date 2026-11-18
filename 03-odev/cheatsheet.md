@@ -113,7 +113,7 @@ int x = 10;
 if (x > 10) {
     printf("x, 10'dan büyük!\n");
 } else {
-    printf("x, 10'a eşit ya da ondan küçük!\n");
+    printf("x, 10'a eşit ya da 10'dan küçük!\n");
 }
 ```
 
@@ -193,6 +193,33 @@ void tek_mi_cift_mi(int k)
         printf("k çift\n");
     }
 }
+```
+
+
+### Array'ler
+
+Birden fazla değeri tutmak için array'lerden bahsetmiştik. Bu değişkenler,
+matematikteki vektörlere benzer.
+
+```c
+
+int c[9];  /* 9 eleman boyutunda array */
+
+c[0] = 1;  /* ilk eleman 0. index'te bulunur */
+// ...
+c[8] = 1;  /* ve son eleman 8. index'te bulunur */
+
+/* array'in herhangi bir indexteki elemanına değişken yardımıya da erişebiliriz */
+int i = 2;
+c[i] = 3;  /* i. index'i (2. index, yani baştan 3. eleman) 3'e eşitle */
+
+/* bu değişken yardımıyla farklı değerlere erişebilme döngülerde işimize epey
+ * yarıyor, bir değişkende tuttuğumuz index sayesinde farklı slotlara
+ * erişebiliyoruz */
+for (int a = 0; a < 9; a++) {
+    c[a] = 0;
+}
+
 ```
 
 
